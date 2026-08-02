@@ -331,7 +331,7 @@ async function ensureNotification(userId: string, type: string, title: string, b
   }
 }
 
-async function main() {
+export async function main() {
   const passwordHash = await bcrypt.hash(DEFAULT_PASSWORD, 10);
 
   const admin = await ensureUser({
@@ -510,4 +510,4 @@ async function main() {
   console.log("admin@clinic.com | doctor@clinic.com | staff@clinic.com | patient@clinic.com");
 }
 
-main();
+if (process.argv[1] && process.argv[1].endsWith("seed.ts")) { main(); }
