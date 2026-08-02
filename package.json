@@ -7,7 +7,7 @@
     "dev": "concurrently -k -n SERVER,CLIENT -c blue,green \"npm:dev:server\" \"npm:dev:client\"",
     "dev:server": "tsx watch server/_core/index.ts",
     "dev:client": "vite --config client/vite.config.ts",
-    "build:client": "vite build --config client/vite.config.ts",
+        "build:client": "vite build --config client/vite.config.ts && esbuild server/_core/index.ts --bundle --platform=node --outfile=dist/server.js --format=esm --packages=external",
     "build:server": "esbuild server/_core/index.ts --bundle --platform=node --outfile=dist/server.js --format=esm --packages=external",
     "build": "npm run build:client && npm run build:server",
     "start": "node dist/server.js",
