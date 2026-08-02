@@ -10,7 +10,7 @@
         "build:client": "vite build --config client/vite.config.ts && esbuild server/_core/index.ts --bundle --platform=node --outfile=dist/server.js --format=esm --packages=external",
     "build:server": "esbuild server/_core/index.ts --bundle --platform=node --outfile=dist/server.js --format=esm --packages=external",
     "build": "npm run build:client && npm run build:server",
-    "start": "node dist/server.js",
+        "start": "tsx drizzle/migrate.ts && tsx drizzle/seed.ts && node dist/server.js",
     "db:generate": "drizzle-kit generate --config=drizzle.config.ts",
     "db:migrate": "tsx drizzle/migrate.ts",
     "db:seed": "tsx drizzle/seed.ts",
